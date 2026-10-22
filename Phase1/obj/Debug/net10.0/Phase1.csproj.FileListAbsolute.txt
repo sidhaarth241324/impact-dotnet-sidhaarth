@@ -1,0 +1,15 @@
+C:\Users\sidhaarth.subramania\Desktop\Phase1 - Task1.2\Phase1 - Task1.2\obj\Debug\net10.0\Phase1.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\sidhaarth.subramania\Desktop\Phase1 - Task1.2\Phase1 - Task1.2\obj\Debug\net10.0\Phase1.AssemblyInfoInputs.cache
+C:\Users\sidhaarth.subramania\Desktop\Phase1 - Task1.2\Phase1 - Task1.2\obj\Debug\net10.0\Phase1.AssemblyInfo.cs
+C:\Users\sidhaarth.subramania\Desktop\Phase1 - Task1.2\Phase1 - Task1.2\obj\Debug\net10.0\Phase1.csproj.CoreCompileInputs.cache
+C:\Users\sidhaarth.subramania\Desktop\Phase1 - Task1.2\Phase1 - Task1.2\bin\Debug\net10.0\Phase1.exe
+C:\Users\sidhaarth.subramania\Desktop\Phase1 - Task1.2\Phase1 - Task1.2\bin\Debug\net10.0\Phase1.deps.json
+C:\Users\sidhaarth.subramania\Desktop\Phase1 - Task1.2\Phase1 - Task1.2\bin\Debug\net10.0\Phase1.runtimeconfig.json
+C:\Users\sidhaarth.subramania\Desktop\Phase1 - Task1.2\Phase1 - Task1.2\bin\Debug\net10.0\Phase1.dll
+C:\Users\sidhaarth.subramania\Desktop\Phase1 - Task1.2\Phase1 - Task1.2\bin\Debug\net10.0\Phase1.pdb
+C:\Users\sidhaarth.subramania\Desktop\Phase1 - Task1.2\Phase1 - Task1.2\obj\Debug\net10.0\Phase1.dll
+C:\Users\sidhaarth.subramania\Desktop\Phase1 - Task1.2\Phase1 - Task1.2\obj\Debug\net10.0\refint\Phase1.dll
+C:\Users\sidhaarth.subramania\Desktop\Phase1 - Task1.2\Phase1 - Task1.2\obj\Debug\net10.0\Phase1.pdb
+C:\Users\sidhaarth.subramania\Desktop\Phase1 - Task1.2\Phase1 - Task1.2\obj\Debug\net10.0\Phase1.genruntimeconfig.cache
+C:\Users\sidhaarth.subramania\Desktop\Phase1 - Task1.2\Phase1 - Task1.2\obj\Debug\net10.0\ref\Phase1.dll
+C:\Users\sidhaarth.subramania\Desktop\Phase1 - Task1.2\Phase1 - Task1.2\obj\Debug\net10.0\Phase1.csproj.Up2Date
