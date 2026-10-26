@@ -1,5 +1,6 @@
 ﻿
 #define TRIAL_VERSION
+using Application;
 using SchoolManagementSystem; //Task 1.5
 using System;
 using System.Globalization;
@@ -225,6 +226,195 @@ class Program
         Console.WriteLine("Employee Name: " + empName);
         Console.WriteLine("Employee Age: " + empAge);
         Console.WriteLine("Employee Department: " + empDept);
+        //Task 1.15
+        CheckValue(42);
+        CheckValue("Hello");    
+        CheckValue(null);
+        CheckValue(25.5);
+        CheckValue(true);
+        Console.WriteLine(CalculateGrade(95));
+        Console.WriteLine(CalculateGrade(80));
+        Console.WriteLine(CalculateGrade(65));
+        Console.WriteLine(CalculateGrade(40));
+        Console.WriteLine(CalculateGrade(25));
+        Console.WriteLine(CalculateGrade(110));
+
+        //1.15
+        Order order1 = new Order("Completed", 1200);
+        CalculateDiscount(order1);
+        Order order2 = new Order("Completed", 600);
+        CalculateDiscount(order2);
+        Order order3 = new Order("Pending", 800);
+        CalculateDiscount(order3);
+
+        //Task 1.16
+        Student stud1 = new Student("Sid", 22, 1001);
+        Console.WriteLine("Student1");
+        Console.WriteLine($"Name: {stud1.Name}, Age: {stud1.Age}, StudentId: {stud1.StudentId}");
+
+        //chained constructor
+        Student stud2 = new Student("Ravi", 25);
+        Console.WriteLine("Student2");
+        Console.WriteLine($"Name: {stud2.Name}, Age: {stud2.Age}, StudentId: {stud2.StudentId}");
+
+//Test overload methods
+        Console.WriteLine($"Grade for score 85 (int): {stud1.CalculateGrade(85)}");
+        Console.WriteLine($"Grade for score 72.5(double): {stud1.CalculateGrade(72.5)}");
+
+        //Age validation
+        try
+        {
+            stud1.Age = 3;
+        }
+        catch (ArgumentOutOfRangeException ex)
+        {
+            Console.WriteLine(ex.Message);
+        }
+
+        // Demonstrate readonly
+        // student1.StudentId = 500; // Uncomment to see the compiler error.
+
+        // Demonstrate const
+        // Student.MinimumAge = 10; // Uncomment to see the compiler error.
+
+        //Task 1.17  Partial class Employee across two files with a partial method; an access-modifier matrix class; Address(Street, City, Pincode) record compared with == and copied with with; a Playlist indexer with bounds checking + a string indexer.
+        //Employee
+        Employee employee = new Employee
+        {
+            EmployeeId = 101,
+            Name = "Sid",
+            Department = "IT"
+        };
+        employee.DisplayDetails();
+
+        employee.Name = "Sidhaarth"; // This will trigger the OnNameChanged partial method
+
+        //Access Modifiers
+
+        AccessModifierMatrix access = new AccessModifierMatrix();
+
+        access.DisplayFields();
+
+        Console.WriteLine();
+        DerivedClass derived = new DerivedClass();
+        derived.DisplayDerivedFields();
+
+
+        //Address record equality
+        Address address1 = new Address("School Street","Karaikal","609609");
+
+        Address address2 = new Address("School Street", "Karaikal", "609609");
+
+        Console.WriteLine($"Address1 == Address2: {address1 == address2}"); // True
+
+        Address address3 = address1 with { city = "Pondicherry" }; // Copy with modification
+
+        Console.WriteLine($"Address3: {address3.street}, {address3.city}, {address3.pincode}"); // School Street, Pondicherry, 609609
+
+        //Playlist indexer
+        Playlist playlist = new Playlist(
+            "Karuppane",
+            "Thalapathy Kacheri",
+            "Vidamuyarchi"
+            );
+        // Integer indexer
+        Console.WriteLine($"First song: {playlist[0]}");
+
+        //update song
+        playlist[1] = "The One";
+        Console.WriteLine($"Updated song: {playlist[1]}");
+
+        //string indexer
+        Console.WriteLine($"Next song { playlist["Vidamuyarchi"]}");
+
+        try
+        {
+            Console.WriteLine(playlist[1]);
+        }
+        catch (ArgumentOutOfRangeException ex)
+        {
+            Console.WriteLine(ex);
+        }
+
+        //Task Mini Q1  Product Catalog: Product { Name, Price, Category(enum) }, 5 objects printed grouped by category.  ✓ Done when: output is grouped correctly by category. 
+        List<ProductCatalogue> products = new List<ProductCatalogue>
+        {
+            new ProductCatalogue("Laptop",52000, Category.Electronics),
+            new ProductCatalogue("T-Shirt", 799, Category.Clothing),
+            new ProductCatalogue("Rice", 120, Category.Food),
+            new ProductCatalogue("Headphones", 1500, Category.Electronics),
+            new ProductCatalogue("Jeans", 1299, Category.Clothing)
+        };
+
+        foreach (Category category in Enum.GetValues(typeof(Category)))
+        {
+            Console.WriteLine($"\nCategory: {category}");
+            // Check every product
+            foreach (ProductCatalogue Product in products)
+            {
+                if (Product.Category == category)
+                {
+                    Console.WriteLine($"Name: {Product.Name}, Price: ₹{Product.Price:F2}"); //F2 --fixed point numeric stanfing
+                }
+            }
+        }
+
+        //Task Mini Q2 Temperature Converter: value + unit → the other two units, using method overloading
+        TemperatureConverter converter = new TemperatureConverter();
+        Console.WriteLine("From Celsius:");
+        converter.Convert(25.0, "C");
+
+        Console.WriteLine("\nFrom Fahrenheit:");
+        converter.Convert("F", 77.0);
+
+        Console.WriteLine("\nFrom Kelvin:");
+        converter.Convert(300.0, 1);
+
+        //Task Mini Q3  Contact Card: ContactCard struct array of 5; case-insensitive search by name.
+        ContactCard[] contacts = new ContactCard[5];
+        contacts[0] = new ContactCard(
+    "Sidhaarth", "9876543210", "sid@example.com");
+
+        contacts[1] = new ContactCard(
+            "Ravi", "9876543211", "ravi@example.com");
+
+        contacts[2] = new ContactCard(
+            "Priya", "9876543212", "priya@example.com");
+
+        contacts[3] = new ContactCard(
+            "Arun", "9876543213", "arun@example.com");
+
+        contacts[4] = new ContactCard(
+            "Nivashini", "9876543214", "niva@example.com");
+
+        // Get the name to search for
+        Console.Write("Enter a name to search: ");
+        string searchName = Console.ReadLine() ?? "";
+
+        bool found = false;
+
+        // Search through the contact array
+        foreach (ContactCard contact in contacts)
+        {
+            if (string.Equals(
+                contact.Name,
+                searchName,
+                StringComparison.OrdinalIgnoreCase))
+            {
+                Console.WriteLine("\nContact found!");
+                Console.WriteLine($"Name: {contact.Name}");
+                Console.WriteLine($"Phone: {contact.PhoneNumber}");
+                Console.WriteLine($"Email: {contact.Email}");
+
+                found = true;
+                break;
+            }
+        }
+
+        if (!found)
+        {
+            Console.WriteLine("Contact not found.");
+        }
 
     }
 
@@ -262,7 +452,56 @@ class Program
     {
         return("Sid", 22, "IT");
     }
-
+    //Task.1.15
+    static void CheckValue(object? value)
+    {
+        switch (value)
+        {
+            case int intValue:
+                Console.WriteLine("Integer value: " + intValue);
+                break;
+            case string strValue:
+                Console.WriteLine("String value: " + strValue);
+                break;
+            case null:
+                Console.WriteLine("Value is null.");
+                break;
+            default:
+                Console.WriteLine("Unknown type.");
+                break;
+        }
+    }
+    //  Grade Calculator Using Relational Patterns
+    static string CalculateGrade(int score)
+    {
+        return score switch
+        {
+            < 0 or > 100 => "Invalid mark",
+            >= 90 => "A",
+            >= 75 => "B",
+            >= 60 => "C",
+            >= 35 => "D",
+            _ => "F"    // _ is the discard pattern. Here, it handles any valid mark below 35.
+        };
+    }
+    static void CalculateDiscount(Order order)
+    {
+        switch (order)
+        {
+            case { Status: "Completed", Amount: >= 1000 }:
+                Console.WriteLine("Apply 10% discount.");
+                break;
+            case { Status: "Completed", Amount: >= 500 }:
+                Console.WriteLine("Apply 5% discount.");
+                break;
+            case { Status: "Pending" }:
+                Console.WriteLine("No discount for pending orders.");
+                break;
+            default:
+                Console.WriteLine("No discount applicable.");
+                break;
+        }
+    }
 }
 
 class Product
@@ -350,3 +589,72 @@ enum FilePermissions // Task 1.10 --- Flag for file permission
     Execute = 4
 }
 
+//Property Patterns Using an Order Class
+
+class Order
+{
+    public string Status { get; set; }
+    public double Amount { get; set; }
+
+    public Order(string status, double amount)
+    {
+        Status = status;
+        Amount = amount;
+    }
+}
+
+//Task 1.16:
+class Student
+{
+    // const,readonly fields Student class: validated properties (age 5–100), parameterized + chained constructor (: this(...)), overloaded CalculateGrade(). Add const vs readonly fields and show which can't change where. 
+    public const int MinimumAge = 5; // Constant field, cannot be changed after compilation
+    public const int MaximumAge = 100;
+    
+    public readonly int StudentId; // Readonly field, can only be assigned in constructor
+
+    private int age;
+
+    public string Name { get; set; }
+
+    public int Age
+    {
+        get { return age; }
+        set
+        {
+            if (value < MinimumAge || value > MaximumAge)
+            {
+                throw new ArgumentOutOfRangeException($"Age must be between {MinimumAge} and {MaximumAge}.");
+            }
+            age = value;
+        }
+    }
+
+    //Parameterized constructor:
+    public Student(string name, int age, int studentId)
+    {
+        Name = name;
+        Age = age;
+        StudentId = studentId;
+    }
+
+    //Constructor chaining:
+    public Student(string name, int age) 
+        : this(name, age, 1001)
+    {
+    }
+
+    //Overloaded CalculateGrade methods
+    public string CalculateGrade(int score)
+    {
+        if (score >= 90) return "A";
+        if (score >= 75) return "B";
+        if (score >= 60) return "C";
+        if (score >= 35) return "D";
+        return "F";
+    }
+
+    public string CalculateGrade(double score)
+    {
+        return CalculateGrade((int)score); // Call the int version
+    }
+}
